@@ -8,7 +8,7 @@ from sklearn.metrics import classification_report
 
 from perceptron import Perceptron
 
-
+# TREINAMENTO
 df = pd.read_csv('tic-tac-toe.csv', delimiter=',')
 
 p = Perceptron(0.1, 100)
@@ -26,6 +26,7 @@ d_train = train.iloc[:, -1].values
 
 p.train(x_train, d_train)
 
+# TESTE
 x_test = test.iloc[:, :-1].values
 d_test = test.iloc[:, -1].values
 
@@ -43,8 +44,8 @@ plt.show()
 
 flag = False
 
+# INSERÇÃO DE DADOS PARA CLASSIFICAÇÃO
 while not flag:
-    # inserção de novos dados pelo usuário
     print('Insira os dados para classificação: ')
     print('top-left-square: ')
     top_left_square = input()
@@ -65,12 +66,12 @@ while not flag:
     print('bottom-right-square: ')
     bottom_right_square = input()
 
-    new_data = np.array([top_left_square, top_middle_square, top_right_square, middle_left_square, middle_middle_square, middle_right_square, bottom_left_square, bottom_middle_square, bottom_right_square])
+    new_data = np.array([top_left_square, top_middle_square, top_right_square, middle_left_square, middle_middle_square,
+                         middle_right_square, bottom_left_square, bottom_middle_square, bottom_right_square])
     new_data = new_data.astype(int)
 
     result = p.predict(new_data)
     result = p.activation(result)
-
 
     print("Vitória de X?")
     if result == 1:
