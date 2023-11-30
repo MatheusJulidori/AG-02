@@ -14,7 +14,7 @@ class Perceptron:
 
     @staticmethod
     def activation(value):
-        return 1 if value >= 0 else -1
+        return 1 if value > 0 else -1
 
     def predict(self, x):
         return np.dot(x, self.weights.T) + self.bias * self.w_bias
